@@ -3,7 +3,7 @@
 
 ### Overview
 
-The <strong>cljc-dynamic-props</strong> is a simple xxx for Clojure projects.
+The <strong>cljc-dynamic-props</strong> is a simple dynamic property handler for Clojure projects.
 
 ### deps.edn
 

@@ -1,6 +1,6 @@
 
-(ns dynamic-props.api
-    #?(:cljs (:require [reagent.core :refer [atom] :rename {ratom}])))
+(ns dynamic-props.state
+    #?(:cljs (:require [reagent.core :refer [atom] :rename {atom ratom}])))
 
 ;; ----------------------------------------------------------------------------
 ;; ----------------------------------------------------------------------------
@@ -14,6 +14,6 @@
 ; @usage
 ; (deref PROPERTIES)
 ; =>
-; {:my-component {:my-prop "My value"}}
-(def PROPERTIES #(:clj  (atom  {})
-                  :cljs (ratom {})))
+; {:my-component {:my-prop "My dynamic property"}}
+(def PROPERTIES #?(:clj  (atom  {})
+                   :cljs (ratom {})))

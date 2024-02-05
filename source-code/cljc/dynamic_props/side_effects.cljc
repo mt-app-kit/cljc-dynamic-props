@@ -7,20 +7,14 @@
 
 (defn update-props!
   ; @description
-  ; Updates the dynamic properties of the component (stored in the properties state atom).
+  ; Updates the dynamic properties of the component in the properties state atom.
   ;
   ; @param (keyword) component-id
   ; @param (function) f
-  ; @param (list of *) params
+  ; @param (list of *)(opt) params
   ;
   ; @usage
-  ; (update-props! :my-component assoc :my-prop "My value")
-  ;
-  ; @usage
-  ; (update-props! :my-component assoc :my-prop "My value")
-  ; (defn my-component
-  ;   [props]
-  ;   (let [props (import-props props)]) ...)
+  ; (update-props! :my-component assoc :my-prop "My dynamic property")
   [component-id f & params]
   (letfn [(f0 [%] (apply f % params))]
          (swap! state/PROPERTIES update component-id f0)))

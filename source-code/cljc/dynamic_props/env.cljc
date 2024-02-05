@@ -1,5 +1,5 @@
 
-(ns dynamic-props.api
+(ns dynamic-props.env
     (:require [dynamic-props.state :as state]))
 
 ;; ----------------------------------------------------------------------------
@@ -13,15 +13,10 @@
   ; @param (map)(opt) default-props
   ;
   ; @usage
-  ; (get-props :my-component)
+  ; (update-props! :my-component assoc :my-prop "My dynamic property")
+  ; (get-props     :my-component)
   ; =>
-  ; {:my-prop "My value"}
-  ;
-  ; @usage
-  ; (get-props :my-component {:my-prop "My default value" :another-prop "Another default value"})
-  ; =>
-  ; {:my-prop "My value"
-  ;  :another-prop "Another default value"}
+  ; {:my-prop "My dynamic property"}
   ;
   ; @return (map)
   [component-id & [default-props]]
@@ -31,17 +26,18 @@
 
 (defn import-props
   ; @description
-  ; Merges the dynamic props of the component (stored in the properties state atom) onto the given properties map.
+  ; Merges the dynamic properties of the component (stored in the properties state atom) onto the given properties map.
   ;
   ; @param (keyword) component-id
   ; @param (map)(opt) component-props
   ; @param (map)(opt) default-props
   ;
   ; @usage
-  ; (import-props :my-component {...})
+  ; (update-props! :my-component assoc :my-prop "My dynamic property")
+  ; (import-props  :my-component {:my-prop "My static property" :another-prop "Another static property"})
   ; =>
-  ; {:my-prop "My value"
-  ;  ...}
+  ; {:my-prop      "My dynamic property"
+  ;  :another-prop "Another static property"}
   ;
   ; @return (map)
   [component-id & [component-props default-props]]
