@@ -7,7 +7,7 @@
 
 (defn update-props!
   ; @description
-  ; Updates the dynamic properties of the component in the properties state atom.
+  ; Updates the dynamic properties of the component in the property state atom.
   ;
   ; @param (keyword) component-id
   ; @param (function) f
@@ -19,9 +19,21 @@
   (letfn [(f0 [%] (apply f % params))]
          (swap! state/PROPERTIES update component-id f0)))
 
+(defn merge-props!
+  ; @description
+  ; Merges the given map onto the dynamic properties of the component in the property state atom.
+  ;
+  ; @param (keyword) component-id
+  ; @param (map) updated-props
+  ;
+  ; @usage
+  ; (merge-props! :my-component {:my-prop "My dynamic property"})
+  [component-id updated-props]
+  (update-props! component-id merge updated-props))
+
 (defn clear-props!
   ; @description
-  ; Clears the dynamic properties of the component from the properties state atom.
+  ; Clears the dynamic properties of the component from the property state atom.
   ;
   ; @param (keyword) component-id
   ;

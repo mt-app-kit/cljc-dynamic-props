@@ -1,8 +1,8 @@
 
 (ns dynamic-props.api
-    (:require [dynamic-props.state :as state]
-              [dynamic-props.env :as env]
-              [dynamic-props.side-effects :as side-effects]))
+    (:require [dynamic-props.env          :as env]
+              [dynamic-props.side-effects :as side-effects]
+              [dynamic-props.state        :as state]))
 
 ;; ----------------------------------------------------------------------------
 ;; ----------------------------------------------------------------------------
@@ -10,9 +10,9 @@
 ; @tutorial Dynamic properties
 ;
 ; Dynamic properties of components are ...
-; ... stored in the properties state atom.
+; ... stored in the property state atom.
 ; ... dynamically updated by functions.
-; ... merged onto the component static properties map (provided as parameter).
+; ... merged onto the component static property map (provided as parameter).
 ;
 ; @code Demo:
 ; (defn update-my-props!
@@ -67,10 +67,12 @@
 
 ; @redirect (dynamic-props.env/*)
 (def get-props    env/get-props)
+(def get-prop     env/get-prop)
 (def import-props env/import-props)
 
 ; @redirect (dynamic-props.side-effects/*)
 (def update-props! side-effects/update-props!)
+(def merge-props!  side-effects/merge-props!)
 (def clear-props!  side-effects/clear-props!)
 
 ; @redirect (dynamic-props.state/*)
