@@ -7,7 +7,7 @@
 
 (defn get-props
   ; @description
-  ; Returns the dynamic properties of the component (stored in the property state atom).
+  ; Returns the dynamic properties of the component (stored in the 'PROPERTIES' atom).
   ;
   ; @param (keyword) component-id
   ; @param (map)(opt) default-props
@@ -26,7 +26,7 @@
 
 (defn get-prop
   ; @description
-  ; Returns a specific dynamic property of the component (stored in the property state atom).
+  ; Returns a specific dynamic property of the component (stored in the 'PROPERTIES' atom).
   ;
   ; @param (keyword) component-id
   ; @param (keyword) prop-key
@@ -48,7 +48,7 @@
 
 (defn import-props
   ; @description
-  ; Merges the dynamic properties of the component (stored in the property state atom) onto the given property map.
+  ; Merges the dynamic properties of the component (stored in the 'PROPERTIES' atom) onto the given property map.
   ;
   ; @param (keyword) component-id
   ; @param (map)(opt) component-props

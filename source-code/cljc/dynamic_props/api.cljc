@@ -41,7 +41,7 @@
 ;   [component-props]
 ;   [:div "Properties of this component:" component-props])
 ;
-; @code The output:
+; @--- The output:
 ; (my-component {:my-prop "My static property" :another-prop "Another static property"})
 ; =>
 ; [:div "Properties of this component:" {:my-prop "My static property" :another-prop "Another static property"}]
