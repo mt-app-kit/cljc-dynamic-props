@@ -16,8 +16,7 @@
   ; @usage
   ; (update-props! :my-component assoc :my-prop "My dynamic property")
   [component-id f & params]
-  (letfn [(f0 [%] (println %)
-                  (apply f % params))]
+  (letfn [(f0 [%] (apply f % params))]
          (swap! state/PROPERTIES update component-id f0)))
 
 (defn merge-props!
