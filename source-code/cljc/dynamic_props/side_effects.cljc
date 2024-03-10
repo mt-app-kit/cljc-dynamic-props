@@ -1,6 +1,6 @@
 
 (ns dynamic-props.side-effects
-    (:require [dynamic-props.state :as state]))
+    (:require [common-state.api :as common-state]))
 
 ;; ----------------------------------------------------------------------------
 ;; ----------------------------------------------------------------------------
@@ -17,7 +17,7 @@
   ; (update-props! :my-component assoc :my-prop "My dynamic property")
   [component-id f & params]
   (letfn [(f0 [%] (apply f % params))]
-         (swap! state/PROPERTIES update component-id f0)))
+         (common-state/update-state! :dynamic-props component-id f0)))
 
 (defn merge-props!
   ; @description
@@ -40,4 +40,4 @@
   ; @usage
   ; (clear-props! :my-component)
   [component-id]
-  (swap! state/PROPERTIES dissoc component-id))
+  (common-state/dissoc-state! :dynamic-props component-id))

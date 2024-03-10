@@ -1,13 +1,13 @@
 
 (ns dynamic-props.env
-    (:require [dynamic-props.state :as state]))
+    (:require [common-state.api :as common-state]))
 
 ;; ----------------------------------------------------------------------------
 ;; ----------------------------------------------------------------------------
 
 (defn get-props
   ; @description
-  ; Returns the dynamic properties of the component (stored in the 'PROPERTIES' atom).
+  ; Returns the dynamic properties of the component (stored in the common state atom).
   ;
   ; @param (keyword) component-id
   ; @param (map)(opt) default-props
@@ -20,13 +20,13 @@
   ;
   ; @return (map)
   [component-id & [default-props]]
-  (if-let [dynamic-props (get @state/PROPERTIES component-id)]
+  (if-let [dynamic-props (common-state/get-state :dynamic-props component-id)]
           (-> default-props (merge dynamic-props))
           (or default-props {})))
 
 (defn get-prop
   ; @description
-  ; Returns a specific dynamic property of the component (stored in the 'PROPERTIES' atom).
+  ; Returns a specific dynamic property of the component (stored in the common state atom).
   ;
   ; @param (keyword) component-id
   ; @param (keyword) prop-key
@@ -40,7 +40,7 @@
   ;
   ; @return (*)
   [component-id prop-key & [default-props]]
-  (if-let [dynamic-props (get-props component-id default-props)]
+  (if-let [dynamic-props (common-state/get-state :dynamic-props component-id)]
           (get dynamic-props prop-key)))
 
 ;; ----------------------------------------------------------------------------
@@ -48,7 +48,7 @@
 
 (defn import-props
   ; @description
-  ; Merges the dynamic properties of the component (stored in the 'PROPERTIES' atom) onto the given property map.
+  ; Merges the dynamic properties of the component (stored in the common state atom) onto the given property map.
   ;
   ; @param (keyword) component-id
   ; @param (map)(opt) component-props
@@ -63,6 +63,6 @@
   ;
   ; @return (map)
   [component-id & [component-props default-props]]
-  (if-let [dynamic-props (get-props component-id default-props)]
+  (if-let [dynamic-props (common-state/get-state :dynamic-props component-id)]
           (-> component-props (merge dynamic-props))
           (or component-props {})))
