@@ -1,6 +1,7 @@
 
 (ns dynamic-props.env
-    (:require [common-state.api :as common-state]))
+    (:require [common-state.api :as common-state]
+              [fruits.map.api :as map]))
 
 ;; ----------------------------------------------------------------------------
 ;; ----------------------------------------------------------------------------
@@ -21,7 +22,7 @@
   ; @return (map)
   [component-id & [default-props]]
   (if-let [dynamic-props (common-state/get-state :dynamic-props component-id)]
-          (-> default-props (merge dynamic-props))
+          (-> default-props (map/deep-merge dynamic-props))
           (or default-props {})))
 
 (defn get-prop
@@ -64,5 +65,5 @@
   ; @return (map)
   [component-id & [component-props default-props]]
   (if-let [dynamic-props (common-state/get-state :dynamic-props component-id)]
-          (-> component-props (merge dynamic-props))
+          (-> component-props (map/deep-merge dynamic-props))
           (or component-props {})))

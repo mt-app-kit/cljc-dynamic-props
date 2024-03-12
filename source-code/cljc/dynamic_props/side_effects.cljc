@@ -1,6 +1,7 @@
 
 (ns dynamic-props.side-effects
-    (:require [common-state.api :as common-state]))
+    (:require [common-state.api :as common-state]
+              [fruits.map.api :as map]))
 
 ;; ----------------------------------------------------------------------------
 ;; ----------------------------------------------------------------------------
@@ -29,7 +30,7 @@
   ; @usage
   ; (merge-props! :my-component {:my-prop "My dynamic property"})
   [component-id updated-props]
-  (update-props! component-id merge updated-props))
+  (update-props! component-id map/deep-merge updated-props))
 
 (defn clear-props!
   ; @description
