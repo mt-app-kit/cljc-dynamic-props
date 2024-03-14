@@ -3,7 +3,7 @@
 
 ### Overview
 
-The <strong>cljc-dynamic-props</strong> is a simple dynamic property handler for Clojure projects.
+The <strong>cljc-dynamic-props</strong> is a simple component dynamic property handler for Clojure projects.
 
 ### deps.edn
 
@@ -16,10 +16,10 @@ The <strong>cljc-dynamic-props</strong> is a simple dynamic property handler for
 
 Check out the latest commit on the [release branch](https://github.com/mt-app-kit/cljc-dynamic-props/tree/release).
 
-### Documentation
-
-The <strong>cljc-dynamic-props</strong> functional documentation is [available here](https://mt-app-kit.github.io/cljc-dynamic-props).
-
 ### Changelog
 
 You can track the changes of the <strong>cljc-dynamic-props</strong> library [here](CHANGES.md).
+
+# Documentation
+
+The <strong>cljc-dynamic-props</strong> functional documentation is [available here](https://mt-app-kit.github.io/cljc-dynamic-props).
