@@ -1,7 +1,7 @@
 
 (ns dynamic-props.side-effects
     (:require [common-state.api :as common-state]
-              [fruits.map.api :as map]))
+              [fruits.map.api   :as map]))
 
 ;; ----------------------------------------------------------------------------
 ;; ----------------------------------------------------------------------------
