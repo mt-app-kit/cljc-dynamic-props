@@ -6,58 +6,14 @@
 ;; ----------------------------------------------------------------------------
 ;; ----------------------------------------------------------------------------
 
-; @tutorial Dynamic properties
+; @tutorial Demo
 ;
-; Dynamic properties of components are ...
-; ... stored in the common state atom.
-; ... dynamically updated by functions.
-; ... merged onto the component static property map (provided as parameter).
-;
-; @--- Demo:
-; (defn update-my-props!
+; @usage
+; (defn my-button
 ;   []
-;   (update-props! :my-component assoc :my-prop "My dynamic property"))
-;
-; (defn my-component
-;   [component-props]
-;   (let [component-props (import-props :my-component component-props)]
-;        [:div [:button {:on-click update-my-props!} "Update properties"]
-;              [:div "Properties of this component:" component-props]]))
-;
-; @--- Cleaning up:
-; (defn my-component
-;   [component-props]
-;   (reagent.core/create-class {:component-will-unmount (fn [_] (clear-props! :my-component))
-;                               :reagent-render         (fn [_] [:div ...])}))
-
-;; ----------------------------------------------------------------------------
-;; ----------------------------------------------------------------------------
-
-; @tutorial Source of truth
-;
-; @--- Providing static properties for a component:
-; (defn my-component
-;   [component-props]
-;   [:div "Properties of this component:" component-props])
-;
-; @--- The output:
-; (my-component {:my-prop "My static property" :another-prop "Another static property"})
-; =>
-; [:div "Properties of this component:" {:my-prop "My static property" :another-prop "Another static property"}]
-;
-; @--- Updating the dynamic properties of the component:
-; (update-props! :my-component assoc :my-prop "My dynamic property")
-;
-; @--- Merging the dynamic properties onto the static properties of the component:
-; (defn my-component
-;   [component-props]
-;   (let [component-props (import-props :my-component component-props)]
-;        [:div "Properties of this component:" component-props]))
-;
-; @--- Let's see what happened:
-; (my-component {:my-prop "My static property" :another-prop "Another static property"})
-; =>
-; [:div "Properties of this component:" {:my-prop "My dynamic property" :another-prop "Another static property"}]
+;   [:button {:on-click #(merge-props! :my-button {:background-color :red})
+;             :style     (import-props :my-button {})}
+;            "My button"])
 
 ;; ----------------------------------------------------------------------------
 ;; ----------------------------------------------------------------------------

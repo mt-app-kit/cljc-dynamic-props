@@ -8,7 +8,7 @@
 
 (defn update-props!
   ; @description
-  ; Updates the dynamic properties of the component in the 'PROPERTIES' atom.
+  ; Updates the dynamic properties of the component (stored in the common state atom).
   ;
   ; @param (keyword) component-id
   ; @param (function) f
@@ -22,7 +22,7 @@
 
 (defn merge-props!
   ; @description
-  ; Merges the given map onto the dynamic properties of the component in the 'PROPERTIES' atom.
+  ; Merges the given map onto the dynamic properties of the component (stored in the common state atom).
   ;
   ; @param (keyword) component-id
   ; @param (map) updated-props
@@ -34,7 +34,7 @@
 
 (defn clear-props!
   ; @description
-  ; Clears the dynamic properties of the component from the 'PROPERTIES' atom.
+  ; Clears the dynamic properties of the component (stored in the common state atom).
   ;
   ; @param (keyword) component-id
   ;
